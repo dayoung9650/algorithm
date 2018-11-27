@@ -7,27 +7,31 @@
 //
 
 #include <iostream>
-#include<stdio.h>
 #include<algorithm>
 using namespace std;
 
-int student[1000000];
+int student[1000001];
 int n, b, c;
 
 int main(int argc, const char * argv[]) {
     
-    scanf("%d ",&n);
+    cin >> n;
     
     for(int i=0; i < n; i++){
-        scanf("%d", &student[i]);
+        cin >> student[i];
     }
-    scanf("%d %d", &b, &c);
+    cin >> b;
+    cin >> c;
     
-    int cnt=0;
+    long long cnt=0;
     for(int i=0;i<n;i++){
         cnt++;
-        cnt += ((student[i]-b)/c);
-        if( (student[i]-b)%c != 0) cnt++;
+        int sub = (student[i]-b);
+        if(sub >= 1){
+            cnt += (sub/c);
+            if( sub %c != 0) cnt++;
+        }
     }
-    printf("%d", cnt);
+    cout << cnt;
+    return 0;
 }
